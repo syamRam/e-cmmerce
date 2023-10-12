@@ -1,0 +1,10 @@
+<div class="w-50 p-3 mx-auto ">
+    <form [formGroup]="VRCode" (ngSubmit)="handleVResetCode(VRCode)">
+
+        <label class="mb-3" for="">Enter Verify Code</label>
+        <input formControlName="resetCode" type="text" class="form-control mb-3">
+
+        <button class="btn bg-main d-block me-auto">Verify</button>
+
+    </form>
+</div>

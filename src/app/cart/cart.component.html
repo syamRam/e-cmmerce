@@ -1,0 +1,40 @@
+<div class="bg-light p-4 my-4">
+
+
+    <div class="d-flex justify-content-between">
+        <h3>Shop Cart</h3>
+        <!--    <a routerLink="/check-out">-->
+        <a [routerLink]="['/check-out/',cartDetails._id]">
+
+            <button class="btn bg-main text-white">Continue To Pay</button>
+
+        </a>
+    </div>
+    <h6 class="text-main">Total Price: {{cartDetails?.totalCartPrice}}</h6>
+
+    <div *ngFor="let produut of cartDetails?.products |filterProducts"
+        class="row align-items-center border-bottom py-3 border-black">
+        <div class="col-md-1">
+            <img class="w-100" [src]="produut.product.imageCover" alt="">
+        </div>
+        <div class="col-md-11 d-flex justify-content-between">
+            <div>
+                <h6>{{produut.product.title}}</h6>
+                <h6 class="text-main">Price : {{produut.price}}</h6>
+                <button (click)="removeItem(produut.product._id)" class="btn m-0 p-0  "><i
+                        class="fa-regular text-danger fs-1 fa-trash-can"></i></button>
+            </div>
+
+            <div>
+                <button (click)="updateItemCount(produut.product._id , produut.count +1)"
+                    class="btn btn-outline-info btn-sm">+</button>
+                <span class="mx-2">{{produut.count}}</span>
+                <button *ngIf="produut.count > 0" (click)="updateItemCount(produut.product._id , produut.count -1)"
+                    class=" btn btn-outline-danger
+                    btn-sm">-</button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
